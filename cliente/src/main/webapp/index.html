@@ -33,21 +33,6 @@
 							class="validate"> <label for="email">E-mail</label>
 					</div>
 
-					<div class="col s12 input-field">
-						<input required="required" placeholder="Telefone"
-							data-ng-model="vm.manter.cliente.telefone" id="telefone"
-							type="tel" class="validate"> <label for="telefone">Telefone</label>
-					</div>
-
-					<div class="col s12 input-field">
-						<label for="foto">Foto</label> <input required="required"
-							data-ng-model="vm.manter.cliente.foto" data-img id="foto"
-							type="file" class="validate"> <img
-							data-ng-if="vm.manter.cliente.id" alt=""
-							title="{{vm.manter.cliente.nome}}" width="130" height="130"
-							src="{{vm.manter.cliente.foto}}">
-					</div>
-
 					<div class="col s12 offset-s5">
 						<br /> <a data-ng-click="vm.salvar()"
 							data-ng-disabled="clienteForm.$invalid"
@@ -69,10 +54,9 @@
 							<tbody>
 								<tr
 									data-ng-repeat="cliente in vm.manter.clientes track by $index">
-									<td><img alt="" title="{{cliente.nome}}" width="30"
-										height="30" src="{{cliente.foto}}"></td>
 									<td style="word-break: break-all;">{{ cliente.nome }} -
-										{{cliente.telefone}} - {{cliente.email}}</td>
+										{{cliente.email}} - Cadastrado em {{ cliente.dataCadastro |
+										date: 'dd/MM/yyyy'}}</td>
 									<td><i data-ng-click="vm.editar(cliente)"
 										style="cursor: pointer;" class="material-icons">mode_edit</i>
 										<i data-ng-click="vm.excluir(cliente.id)"
@@ -104,8 +88,6 @@
 
 	<script src="app/app.js"></script>
 
-	<script src="app/cliente/file.upload.directive.js"></script>
-	<script src="app/cliente/modal.directive.js"></script>
 	<script src="app/cliente/cliente.service.js"></script>
 	<script src="app/cliente/cliente.controller.js"></script>
 

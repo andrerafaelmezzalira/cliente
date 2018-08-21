@@ -1,5 +1,6 @@
 package br.com.cliente.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -23,16 +24,16 @@ public class ClienteService {
 
 		boolean nomeValido = cliente.getNome() != null && !"".equals(cliente.getNome());
 		boolean emailValido = cliente.getEmail() != null && !"".equals(cliente.getEmail());
-		boolean telefoneValido = cliente.getTelefone() != null && !"".equals(cliente.getTelefone());
-		boolean fotoValido = cliente.getFoto() != null && !"".equals(cliente.getFoto());
 
-		if (!nomeValido || !emailValido || !telefoneValido || !fotoValido) {
+		if (!nomeValido || !emailValido) {
 			throw new CamposObrigatoriosException("Existem campos obrigatórios");
 		}
 
 		if (cliente.getId() != null) {
 			repository.update(cliente);
 		} else {
+			cliente.setAtivo(true);
+			cliente.setDataCadastro(new Date());
 			repository.insert(cliente);
 		}
 	}

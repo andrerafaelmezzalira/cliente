@@ -1,5 +1,7 @@
 package br.com.cliente.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,10 +26,10 @@ public class Cliente implements AbstractEntity<Integer> {
 	private String email;
 
 	@Column(nullable = false)
-	private String telefone;
+	private Date dataCadastro;
 
-	@Column(nullable = false, columnDefinition = "Text")
-	private String foto;
+	@Column(nullable = false)
+	private Boolean ativo;
 
 	@Override
 	public Integer getId() {
@@ -55,19 +57,20 @@ public class Cliente implements AbstractEntity<Integer> {
 		return email;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public Boolean getAtivo() {
+		return ativo;
 	}
 
-	public void setFoto(String foto) {
-		this.foto = foto;
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
 
-	public String getFoto() {
-		return foto;
+	public Date getDataCadastro() {
+		return dataCadastro;
 	}
+
 }
